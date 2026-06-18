@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STACKLY — Esports HQ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="live.html">Live</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="bracket.html">Bracket</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+  </ul>
+
+  <div class="nav-auth">
+    <button class="btn-login" id="openLogin">Log In</button>
+    <button class="btn-signup" id="openSignup">Sign Up</button>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="live.html">Live Matches</a>
+  <a href="featured.html">Featured Game</a>
+  <a href="teams.html">Teams</a>
+  <a href="bracket.html">Tournament</a>
+  <a href="stats.html">Player Stats</a>
+  <a href="players.html">Players</a>
+  <a href="news.html">News</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="streaming.html">Streams</a>
+  <a href="community.html">Community</a>
+  <a href="sponsors.html">Sponsors</a>
+
+  <div class="mobile-auth-btns">
+    <button class="btn-login" id="openLoginMobile">Log In</button>
+    <button class="btn-signup" id="openSignupMobile">Sign Up</button>
+  </div>
+</div>
+
+<main class="page-main">
+
+<section class="hero">
+  <div class="hero-bg-orb hero-orb1"></div>
+  <div class="hero-bg-orb hero-orb2"></div>
+  <div class="hero-bg-orb hero-orb3"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🔴 Live Season — World Championship 2025</div>
+    <h1 class="glitch-title" data-text="DOMINATE">DOMINATE</h1>
+    <div class="hero-sub">The Arena Awaits</div>
+
+    <p class="hero-desc">
+      The world's most elite esports platform. Watch, compete, and rise through the ranks with the best players on the planet.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="live.html" class="btn btn-primary">⚡ Watch Live</a>
+      <a href="bracket.html" class="btn btn-outline">View Bracket</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num" data-count="2.4M">0</span>
+        <span class="hero-stat-label">Viewers Online</span>
+      </div>
+      <div>
+        <span class="hero-stat-num" data-count="$4.2M">0</span>
+        <span class="hero-stat-label">Prize Pool</span>
+      </div>
+      <div>
+        <span class="hero-stat-num" data-count="128">0</span>
+        <span class="hero-stat-label">Teams Competing</span>
+      </div>
+      <div>
+        <span class="hero-stat-num" data-count="38">0</span>
+        <span class="hero-stat-label">Countries</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Explore Stackly</div>
+    <h2 class="section-title">Everything Esports <span class="cyan">In One Place</span></h2>
+
+    <div class="home-section-grid">
+
+      <div class="home-section-card">
+        <div class="home-icon">🔴</div>
+        <h3>Live Matches</h3>
+        <p>Watch real-time esports battles with live scores, team stats, commentary, and instant match highlights.</p>
+        <a href="live.html">Explore Live →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">👥</div>
+        <h3>Pro Teams</h3>
+        <p>Discover top-ranked teams, player rosters, win rates, rankings, and tournament performance.</p>
+        <a href="teams.html">View Teams →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">🏆</div>
+        <h3>Tournament Bracket</h3>
+        <p>Follow quarter-finals, semi-finals, finals, eliminations, winners, and champion progress.</p>
+        <a href="bracket.html">View Bracket →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">🎮</div>
+        <h3>Featured Players</h3>
+        <p>Track MVP players, kill records, accuracy, ratings, achievements, and career highlights.</p>
+        <a href="players.html">View Players →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">📰</div>
+        <h3>Latest News</h3>
+        <p>Read esports updates, match reports, roster changes, season announcements, and event stories.</p>
+        <a href="news.html">Read News →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">📅</div>
+        <h3>Match Schedule</h3>
+        <p>Check upcoming matches, event dates, match timings, venues, and tournament calendars.</p>
+        <a href="schedule.html">See Schedule →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">📺</div>
+        <h3>Live Streams</h3>
+        <p>Watch official streams, creator broadcasts, tournament coverage, exclusive esports content.</p>
+        <a href="streaming.html">Watch Streams →</a>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">💬</div>
+        <h3>Community Hub</h3>
+        <p>Join discussions, share strategies, connect with players, and participate in community events.</p>
+        <a href="community.html">Join Community →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Live Now</div>
+    <h2 class="section-title">Featured <span class="red">Matches</span></h2>
+
+    <div class="home-section-grid">
+      <div class="home-section-card">
+        <span class="live-tag">LIVE</span>
+        <h3>🐉 Dragon Force vs ⚡ Volt Squad</h3>
+        <p>Grand Final rematch with elite-level strategy, fast rotations, and explosive gameplay.</p>
+        <a href="live.html">Watch Match →</a>
+      </div>
+
+      <div class="home-section-card">
+        <span class="time-tag">20:30 IST</span>
+        <h3>🦅 Apex Hawks vs 🔥 Inferno</h3>
+        <p>A high-pressure semi-final clash between two aggressive championship contenders.</p>
+        <a href="schedule.html">View Schedule →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Power Rankings</div>
+    <h2 class="section-title">Top <span class="cyan">Teams</span></h2>
+
+    <div class="home-section-grid">
+      <div class="home-section-card">
+        <div class="home-icon">🐉</div>
+        <h3>Dragon Force</h3>
+        <p>Rank #1 · 18 Wins · 92% Win Rate</p>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">⚡</div>
+        <h3>Volt Squad</h3>
+        <p>Rank #2 · 15 Wins · 86% Win Rate</p>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">🦅</div>
+        <h3>Apex Hawks</h3>
+        <p>Rank #3 · 13 Wins · 79% Win Rate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Global Statistics</div>
+    <h2 class="section-title">Community <span class="red">Impact</span></h2>
+
+    <div class="home-section-grid">
+      <div class="home-section-card">
+        <div class="home-icon">👥</div>
+        <h3>4.8M+</h3>
+        <p>Registered players competing and watching worldwide.</p>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">🌎</div>
+        <h3>38 Countries</h3>
+        <p>Global participation from professional esports teams.</p>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">🏆</div>
+        <h3>$4.2M</h3>
+        <p>Total prize pool across the championship season.</p>
+      </div>
+
+      <div class="home-section-card">
+        <div class="home-icon">🎮</div>
+        <h3>128 Teams</h3>
+        <p>Elite teams battling for the ultimate championship title.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Latest Updates</div>
+    <h2 class="section-title">Esports <span class="cyan">News</span></h2>
+
+    <div class="home-section-grid">
+      <div class="home-section-card">
+        <h3>Dragon Force Reach Finals</h3>
+        <p>The defending champions secured their place after a dominant 3-0 victory.</p>
+        <a href="news.html">Read More →</a>
+      </div>
+
+      <div class="home-section-card">
+        <h3>New Season Announced</h3>
+        <p>The 2026 Global Masters season will feature 64 teams and larger prize pools.</p>
+        <a href="news.html">Read More →</a>
+      </div>
+
+      <div class="home-section-card">
+        <h3>Record Breaking Viewership</h3>
+        <p>The championship crossed 2.4 million concurrent viewers worldwide.</p>
+        <a href="news.html">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="home-cta-card">
+      <h2>Ready To Join The Arena?</h2>
+      <p>
+        Create your account, track your favorite teams, participate in tournaments,
+        and become part of the world's fastest growing esports community.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary" id="openSignupCta">Create Account</button>
+        <a href="live.html" class="btn btn-outline">Watch Live</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img footer-logo-img">
+        </a>
+        <p>Stackly is the world's premier esports platform — delivering elite competition, real-time data, and a global community 24/7.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Competition</h4>
+        <ul>
+          <li><a href="live.html">Live Matches</a></li>
+          <li><a href="bracket.html">Tournament Bracket</a></li>
+          <li><a href="players.html">Rankings</a></li>
+          <li><a href="players.html">Hall of Fame</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="404page.html">Discord</a></li>
+          <li><a href="404page.html">Forums</a></li>
+          <li><a href="404page.html">Predictions</a></li>
+          <li><a href="404page.html">Fantasy League</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="404page.html">About Us</a></li>
+          <li><a href="404page.html">Press Kit</a></li>
+          <li><a href="404page.html">Careers</a></li>
+          <li><a href="404page.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 STACKLY · ALL RIGHTS RESERVED · BUILT FOR CHAMPIONS</div>
+      <div class="footer-social">
+        <a href="404page.html" class="social-link">𝕏</a>
+        <a href="404page.html" class="social-link">💬</a>
+        <a href="404page.html" class="social-link">▶</a>
+        <a href="404page.html" class="social-link">📸</a>
+        <a href="404page.html" class="social-link">🟣</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal" id="authModal">
+    <button class="auth-close" id="authClose" aria-label="Close">✕</button>
+
+    <div class="auth-logo-wrap">
+      <img src="assets/logo-dark.webp" alt="Stackly Logo" class="auth-logo-img">
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Log In</button>
+      <button class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <div class="auth-panel active" id="panel-login">
+      <div class="auth-heading">Welcome back</div>
+      <p class="auth-sub">Enter the arena. Your stats await.</p>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" />
+      </div>
+
+      <a href="404page.html" class="auth-forgot">Forgot password?</a>
+      <button class="auth-submit">Log In to Stackly</button>
+
+      <div class="auth-divider"><span>or continue with</span></div>
+
+      <div class="auth-social">
+        <button class="auth-social-btn">🌐 Google</button>
+        <button class="auth-social-btn">🎮 Discord</button>
+      </div>
+
+      <div class="auth-switch">Don't have an account? <button id="switchToSignup">Sign up free</button></div>
+    </div>
+
+    <div class="auth-panel" id="panel-signup">
+      <div class="auth-heading">Create your account</div>
+      <p class="auth-sub">Join 4.8M players — track matches, predict outcomes, rise the ranks.</p>
+
+      <div class="auth-field-row">
+        <div class="auth-field">
+          <label>First Name</label>
+          <input type="text" placeholder="Arjun" />
+        </div>
+
+        <div class="auth-field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Sharma" />
+        </div>
+      </div>
+
+      <div class="auth-field">
+        <label>Gamertag / Username</label>
+        <input type="text" placeholder="ZephyrX" />
+      </div>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="Create a strong password" id="signupPassword" />
+
+        <div class="password-strength">
+          <div class="strength-bar" id="s1"></div>
+          <div class="strength-bar" id="s2"></div>
+          <div class="strength-bar" id="s3"></div>
+          <div class="strength-bar" id="s4"></div>
+        </div>
+      </div>
+
+      <button class="auth-submit">Create Account</button>
+
+      <div class="auth-divider"><span>or sign up with</span></div>
+
+      <div class="auth-social">
+        <button class="auth-social-btn">🌐 Google</button>
+        <button class="auth-social-btn">🎮 Discord</button>
+      </div>
+
+      <p class="auth-terms">By signing up you agree to our <a href="404page.html">Terms of Service</a> and <a href="404page.html">Privacy Policy</a>.</p>
+      <div class="auth-switch">Already have an account? <button id="switchToLogin">Log in</button></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

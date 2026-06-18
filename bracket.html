@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tournament Bracket — STACKLY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+.section-text{
+  max-width:650px;
+  color:var(--muted);
+  font-size:1.1rem;
+  line-height:1.7;
+  margin-top:18px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:32px;
+  align-items:center;
+}
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:26px;
+}
+
+.hero-card{
+  min-height:260px;
+  border:1px solid rgba(0,245,255,.25);
+  background:linear-gradient(135deg,rgba(0,245,255,.08),rgba(139,0,255,.12));
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  font-size:5rem;
+  box-shadow:0 0 40px rgba(0,245,255,.08);
+}
+
+.hero-card span{
+  font-family:'Orbitron',sans-serif;
+  font-size:1rem;
+  color:var(--gold);
+  margin-top:14px;
+}
+
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:34px;
+}
+
+.info-card,
+.team-card{
+  padding:26px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+  border-radius:18px;
+  transition:.3s ease;
+}
+
+.info-card:hover,
+.team-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(0,245,255,.4);
+  box-shadow:0 16px 40px rgba(0,245,255,.08);
+}
+
+.info-card h3,
+.team-card h3{
+  color:#fff;
+  margin-bottom:8px;
+}
+
+.info-card p,
+.team-card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.team-card{
+  text-align:center;
+  font-size:2.2rem;
+}
+
+.team-card h3{
+  font-size:1.1rem;
+  margin-top:12px;
+}
+
+.section-dark{
+  background:rgba(255,255,255,.025);
+}
+
+.schedule-list{
+  display:grid;
+  gap:16px;
+  margin-top:34px;
+}
+
+.schedule-list div{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+  border-radius:16px;
+}
+
+.schedule-list strong{
+  color:var(--gold);
+}
+
+.schedule-list span{
+  color:var(--muted);
+}
+
+.cta-box{
+  text-align:center;
+  padding:50px 24px;
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(0,245,255,.12),rgba(139,0,255,.16));
+  border:1px solid rgba(0,245,255,.22);
+}
+
+.cta-box h2{
+  color:#fff;
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+}
+
+.cta-box p{
+  color:var(--muted);
+  max-width:650px;
+  margin:14px auto 24px;
+  line-height:1.7;
+}
+
+
+/* FIXED TOURNAMENT BRACKET ALIGNMENT */
+.bracket-visual{
+  width:100%;
+  overflow-x:auto;
+  padding:24px 0 12px;
+}
+
+.bracket-heading-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+  min-width:900px;
+  margin-bottom:14px;
+}
+
+.bracket-heading{
+  text-align:center;
+  padding-bottom:8px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.15em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+.bracket-heading.champion-heading{
+  color:var(--gold);
+}
+
+.bracket-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+  min-width:900px;
+  align-items:stretch;
+}
+
+.bracket-col{
+  min-height:470px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:34px;
+}
+
+.bracket-col.quarter-final{
+  justify-content:space-between;
+}
+
+.bracket-col.semi-final{
+  justify-content:space-around;
+}
+
+.bracket-col.final,
+.bracket-col.champion-col{
+  justify-content:center;
+}
+
+.bracket-match{
+  width:100%;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  padding:12px;
+  box-shadow:0 12px 35px rgba(0,0,0,.18);
+}
+
+.bracket-team{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  color:#fff;
+  padding:10px 8px;
+  font-size:.95rem;
+}
+
+.bracket-team + .bracket-team{
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.bracket-team.winner{
+  color:#00F5FF;
+  font-weight:700;
+}
+
+.bracket-team-score{
+  font-weight:800;
+  color:#fff;
+}
+
+.bracket-team-score.cyan{
+  color:#00F5FF;
+}
+
+.bracket-match.final-match{
+  border-color:rgba(0,245,255,.3);
+}
+
+.bracket-match.champion-match{
+  border-color:var(--gold);
+  text-align:center;
+  background:rgba(255,184,0,.05);
+}
+
+.champion-trophy{
+  font-size:2rem;
+  margin-bottom:8px;
+}
+
+.champion-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:.75rem;
+  font-weight:900;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+
+.champion-name{
+  font-weight:700;
+  font-size:1rem;
+  color:#fff;
+}
+
+@media(max-width:900px){
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cards-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero-card{
+    min-height:220px;
+  }
+}
+
+@media(max-width:600px){
+  .section{
+    padding:70px 18px;
+  }
+
+  .cards-grid{
+    grid-template-columns:1fr;
+  }
+
+  .schedule-list div{
+    flex-direction:column;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .hero-actions a,
+  .cta-box button{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="live.html">Live</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="bracket.html">Bracket</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+  </ul>
+
+  <div class="nav-auth">
+    <button class="btn-login" id="openLogin">Log In</button>
+    <button class="btn-signup" id="openSignup">Sign Up</button>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="live.html">Live Matches</a>
+  <a href="featured.html">Featured Game</a>
+  <a href="teams.html">Teams</a>
+  <a href="bracket.html">Tournament</a>
+  <a href="stats.html">Player Stats</a>
+  <a href="players.html">Players</a>
+  <a href="news.html">News</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="streaming.html">Streams</a>
+  <a href="community.html">Community</a>
+  <a href="sponsors.html">Sponsors</a>
+
+  <div class="mobile-auth-btns">
+    <button class="btn-login" id="openLoginMobile">Log In</button>
+    <button class="btn-signup" id="openSignupMobile">Sign Up</button>
+  </div>
+</div>
+
+<main class="page-main">
+
+<section class="section hero-section">
+  <div class="section-inner hero-grid">
+    <div>
+      <div class="eyebrow">STACKLY ESPORTS</div>
+      <h1 class="section-title">Battle for the <span class="red">Championship</span></h1>
+      <p class="section-text">
+        Track live matches, elite teams, tournament brackets, player stats, community predictions,
+        and esports updates in one powerful platform.
+      </p>
+      <div class="hero-actions">
+        <a href="live.html" class="btn-signup">Watch Live</a>
+        <a href="teams.html" class="btn-login">Explore Teams</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      🏆
+      <span>World Finals 2025</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Live Now</div>
+    <h2 class="section-title">Featured <span class="red">Matches</span></h2>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <h3>Dragon Force vs Volt Squad</h3>
+        <p>Final match · Best of 5 · Live tonight</p>
+      </div>
+      <div class="info-card">
+        <h3>Apex Hawks vs Inferno</h3>
+        <p>Placement match · Semi-final replay</p>
+      </div>
+      <div class="info-card">
+        <h3>Night Ops vs Byte Force</h3>
+        <p>Elimination match · Match highlights</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-inner">
+    <div class="eyebrow">Top Squads</div>
+    <h2 class="section-title">Elite <span class="red">Teams</span></h2>
+
+    <div class="cards-grid">
+      <div class="team-card">🐉 <h3>Dragon Force</h3><p>Rank #1 · 18 Wins</p></div>
+      <div class="team-card">⚡ <h3>Volt Squad</h3><p>Rank #2 · 16 Wins</p></div>
+      <div class="team-card">🦅 <h3>Apex Hawks</h3><p>Rank #3 · 14 Wins</p></div>
+      <div class="team-card">🔥 <h3>Inferno</h3><p>Rank #4 · 12 Wins</p></div>
+      <div class="team-card">🌊 <h3>Tidal Wave</h3><p>Rank #5 · 10 Wins</p></div>
+      <div class="team-card">🤖 <h3>Byte Force</h3><p>Rank #6 · 9 Wins</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Players</div>
+    <h2 class="section-title">Star <span class="red">Players</span></h2>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <h3>ZephyrX</h3>
+        <p>K/D 4.8 · MVP Leader · Dragon Force</p>
+      </div>
+      <div class="info-card">
+        <h3>ShadowRex</h3>
+        <p>K/D 4.2 · Sniper Specialist · Volt Squad</p>
+      </div>
+      <div class="info-card">
+        <h3>NovaKing</h3>
+        <p>K/D 3.9 · Entry Fragger · Apex Hawks</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="section-inner">
+    <div class="eyebrow">Schedule</div>
+    <h2 class="section-title">Upcoming <span class="red">Games</span></h2>
+
+    <div class="schedule-list">
+      <div>
+        <strong>Today</strong>
+        <span>Dragon Force vs Volt Squad · 8:00 PM</span>
+      </div>
+      <div>
+        <strong>Tomorrow</strong>
+        <span>Apex Hawks vs Inferno · 7:30 PM</span>
+      </div>
+      <div>
+        <strong>Friday</strong>
+        <span>Grand Final Ceremony · 9:00 PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Community</div>
+    <h2 class="section-title">Join the <span class="red">Arena</span></h2>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <h3>💬 Discord</h3>
+        <p>Chat with players, fans, and team supporters.</p>
+      </div>
+      <div class="info-card">
+        <h3>🎯 Predictions</h3>
+        <p>Predict match winners and climb the leaderboard.</p>
+      </div>
+      <div class="info-card">
+        <h3>🎥 Streams</h3>
+        <p>Watch official tournament streams and replays.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="section-inner cta-box">
+    <h2>Ready to enter Stackly?</h2>
+    <p>Create your account and follow your favorite teams, players, and live tournaments.</p>
+    <button class="btn-signup" id="openSignupCta">Create Account</button>
+  </div>
+</section>
+
+<section class="section bracket" id="bracket">
+  <div class="section-inner">
+    <div class="eyebrow">World Championship 2025</div>
+    <h2 class="section-title reveal">Tournament <span class="red">Bracket</span></h2>
+
+    <div class="bracket-visual reveal reveal-delay-1">
+      <div class="bracket-heading-row">
+        <div class="bracket-heading">Quarter-Final</div>
+        <div class="bracket-heading">Semi-Final</div>
+        <div class="bracket-heading">Final</div>
+        <div class="bracket-heading champion-heading">Champion</div>
+      </div>
+
+      <div class="bracket-grid">
+        <div class="bracket-col quarter-final">
+          <div class="bracket-match">
+            <div class="bracket-team winner">🐉 Dragon Force <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">🐺 Iron Wolves <span class="bracket-team-score">1</span></div>
+          </div>
+          <div class="bracket-match">
+            <div class="bracket-team winner">🦅 Apex Hawks <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">🌊 Tidal Wave <span class="bracket-team-score">2</span></div>
+          </div>
+          <div class="bracket-match">
+            <div class="bracket-team winner">⚡ Volt Squad <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">🎯 Night Ops <span class="bracket-team-score">0</span></div>
+          </div>
+          <div class="bracket-match">
+            <div class="bracket-team winner">🔥 Inferno <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">🤖 Byte Force <span class="bracket-team-score">1</span></div>
+          </div>
+        </div>
+
+        <div class="bracket-col semi-final">
+          <div class="bracket-match">
+            <div class="bracket-team winner">🐉 Dragon Force <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">🦅 Apex Hawks <span class="bracket-team-score">2</span></div>
+          </div>
+          <div class="bracket-match">
+            <div class="bracket-team winner">⚡ Volt Squad <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">🔥 Inferno <span class="bracket-team-score">1</span></div>
+          </div>
+        </div>
+
+        <div class="bracket-col final">
+          <div class="bracket-match final-match">
+            <div class="bracket-team winner">🐉 Dragon Force <span class="bracket-team-score cyan">3</span></div>
+            <div class="bracket-team">⚡ Volt Squad <span class="bracket-team-score">1</span></div>
+          </div>
+        </div>
+
+        <div class="bracket-col champion-col">
+          <div class="bracket-match champion-match">
+            <div class="champion-trophy">🏆</div>
+            <div class="champion-title">WORLD CHAMPIONS</div>
+            <div class="champion-name">🐉 DRAGON FORCE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img footer-logo-img">
+        </a>
+        <p>Stackly is the world's premier esports platform — delivering elite competition, real-time data, and a global community 24/7.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Competition</h4>
+         <ul>
+          <li><a href="live.html">Live Matches</a></li>
+          <li><a href="bracket.html">Tournament Bracket</a></li>
+          <li><a href="players.html">Rankings</a></li>
+          <li><a href="players.html">Hall of Fame</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="404page.html">Discord</a></li>
+          <li><a href="404page.html">Forums</a></li>
+          <li><a href="404page.html">Predictions</a></li>
+          <li><a href="404page.html">Fantasy League</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="404page.html">About Us</a></li>
+          <li><a href="404page.html">Press Kit</a></li>
+          <li><a href="404page.html">Careers</a></li>
+          <li><a href="404page.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 STACKLY · ALL RIGHTS RESERVED · BUILT FOR CHAMPIONS</div>
+      <div class="footer-social">
+        <a href="404page.html" class="social-link">𝕏</a>
+        <a href="404page.html" class="social-link">💬</a>
+        <a href="404page.html" class="social-link">▶</a>
+        <a href="404page.html" class="social-link">📸</a>
+        <a href="404page.html" class="social-link">🟣</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal" id="authModal">
+    <button class="auth-close" id="authClose">✕</button>
+
+    <div class="auth-logo-wrap">
+      <img src="assets/logo-dark.webp" alt="Stackly Logo" class="auth-logo-img">
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Log In</button>
+      <button class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <div class="auth-panel active" id="panel-login">
+      <div class="auth-heading">Welcome back</div>
+      <p class="auth-sub">Enter the arena. Your stats await.</p>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" />
+      </div>
+
+      <a href="404page.html" class="auth-forgot">Forgot password?</a>
+      <button class="auth-submit">Log In to Stackly</button>
+
+      <div class="auth-switch">
+        Don't have an account? <button id="switchToSignup">Sign up free</button>
+      </div>
+    </div>
+
+    <div class="auth-panel" id="panel-signup">
+      <div class="auth-heading">Create your account</div>
+      <p class="auth-sub">Join 4.8M players — track matches, predict outcomes, rise the ranks.</p>
+
+      <div class="auth-field-row">
+        <div class="auth-field">
+          <label>First Name</label>
+          <input type="text" placeholder="Arjun" />
+        </div>
+        <div class="auth-field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Sharma" />
+        </div>
+      </div>
+
+      <div class="auth-field">
+        <label>Gamertag</label>
+        <input type="text" placeholder="ZephyrX" />
+      </div>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="Create password" />
+      </div>
+
+      <button class="auth-submit">Create Account</button>
+
+      <div class="auth-switch">
+        Already have an account? <button id="switchToLogin">Log in</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+const openSignupCta = document.getElementById("openSignupCta");
+if(openSignupCta){
+  openSignupCta.addEventListener("click", () => {
+    window.location.href = "signup.html";
+  });
+}
+</script>
+
+</body>
+</html>

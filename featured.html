@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Featured Game — STACKLY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="live.html">Live</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="bracket.html">Bracket</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+  </ul>
+
+  <div class="nav-auth">
+    <button class="btn-login" id="openLogin">Log In</button>
+    <button class="btn-signup" id="openSignup">Sign Up</button>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="live.html">Live Matches</a>
+  <a href="featured.html">Featured Game</a>
+  <a href="teams.html">Teams</a>
+  <a href="bracket.html">Tournament</a>
+  <a href="stats.html">Player Stats</a>
+  <a href="players.html">Players</a>
+  <a href="news.html">News</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="streaming.html">Streams</a>
+  <a href="community.html">Community</a>
+  <a href="sponsors.html">Sponsors</a>
+
+  <div class="mobile-auth-btns">
+    <button class="btn-login" id="openLoginMobile">Log In</button>
+    <button class="btn-signup" id="openSignupMobile">Sign Up</button>
+  </div>
+</div>
+
+<main class="page-main">
+
+  <!-- FEATURED GAME -->
+  <section class="section featured-game" id="featured">
+    <div class="section-inner">
+      <div class="featured-inner">
+
+        <div class="featured-visual reveal">
+          <div class="featured-hex-grid">
+            <div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div>
+            <div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div>
+            <div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div>
+            <div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div>
+            <div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div><div class="hex-cell"></div>
+          </div>
+
+          <div class="featured-game-card">
+            <div class="game-icon-large">🎮</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan);">
+              FEATURED TITLE
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-content reveal reveal-delay-2">
+          <div class="eyebrow">Game of the Season</div>
+          <h2 class="featured-game-title">
+            VALORANT<br/>
+            <span class="cyan">Champions Tour</span>
+          </h2>
+
+          <p class="featured-desc">
+            The world's premier tactical shooter esports circuit featuring 128 of the globe's finest teams competing for the ultimate prize over 6 months of brutal competition.
+          </p>
+
+          <div class="featured-tags">
+            <span class="tag">Tactical FPS</span>
+            <span class="tag">Team-Based</span>
+            <span class="tag">5v5</span>
+            <span class="tag">Global</span>
+          </div>
+
+          <div class="progress-bars">
+            <div class="progress-row">
+              <div class="progress-label"><span>Tournament Progress</span><span>75%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="--w:75%"></div></div>
+            </div>
+
+            <div class="progress-row">
+              <div class="progress-label"><span>Slots Filled</span><span>112/128</span></div>
+              <div class="progress-track"><div class="progress-fill" style="--w:88%;animation-delay:0.7s"></div></div>
+            </div>
+
+            <div class="progress-row">
+              <div class="progress-label"><span>Prize Distributed</span><span>$1.8M / $4.2M</span></div>
+              <div class="progress-track"><div class="progress-fill" style="--w:43%;animation-delay:0.9s"></div></div>
+            </div>
+          </div>
+
+          <a href="index.html" class="btn btn-primary">Explore Tournament</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TOURNAMENT HIGHLIGHTS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="eyebrow">Tournament Overview</div>
+      <h2 class="featured-game-title">Season <span class="cyan">Highlights</span></h2>
+
+      <div class="featured-tags" style="margin-top:30px;">
+        <div class="tag">128 Global Teams</div>
+        <div class="tag">$4.2M Prize Pool</div>
+        <div class="tag">40 Countries</div>
+        <div class="tag">12M+ Viewers</div>
+        <div class="tag">6 Month Season</div>
+      </div>
+
+      <p class="featured-desc" style="margin-top:25px;max-width:850px;">
+        This season brings together elite squads, rising underdogs, legendary captains, and millions of fans. Every round decides who moves closer to becoming the next global champion.
+      </p>
+    </div>
+  </section>
+
+  <!-- TOP TEAMS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="eyebrow">Elite Squads</div>
+      <h2 class="featured-game-title">Top Ranked <span class="cyan">Teams</span></h2>
+
+      <div class="featured-tags" style="margin-top:30px;">
+        <span class="tag">Sentinels — Rank #1</span>
+        <span class="tag">Fnatic — Rank #2</span>
+        <span class="tag">Paper Rex — Rank #3</span>
+        <span class="tag">Gen.G — Rank #4</span>
+        <span class="tag">LOUD — Rank #5</span>
+      </div>
+
+      <p class="featured-desc" style="margin-top:25px;max-width:850px;">
+        Each team enters the arena with a unique playstyle — aggressive entries, tactical map control, clutch specialists, and world-class teamwork.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED PLAYERS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="eyebrow">Player Spotlight</div>
+      <h2 class="featured-game-title">Star <span class="cyan">Players</span></h2>
+
+      <div class="featured-tags" style="margin-top:30px;">
+        <span class="tag">TenZ — Duelist</span>
+        <span class="tag">Derke — Entry Fragger</span>
+        <span class="tag">Something — Sharpshooter</span>
+        <span class="tag">Boaster — IGL</span>
+        <span class="tag">Meteor — Clutch King</span>
+      </div>
+
+      <p class="featured-desc" style="margin-top:25px;max-width:850px;">
+        From lightning-fast flicks to impossible clutch rounds, these players define the tournament with skill, discipline, and fearless gameplay.
+      </p>
+    </div>
+  </section>
+
+  <!-- UPCOMING MATCHES -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="eyebrow">Next Battles</div>
+      <h2 class="featured-game-title">Upcoming <span class="cyan">Matches</span></h2>
+
+      <div class="progress-bars" style="margin-top:35px;">
+        <div class="progress-row">
+          <div class="progress-label"><span>Sentinels vs Fnatic</span><span>Today · 8:00 PM</span></div>
+          <div class="progress-track"><div class="progress-fill" style="--w:65%"></div></div>
+        </div>
+
+        <div class="progress-row">
+          <div class="progress-label"><span>Gen.G vs Paper Rex</span><span>Tomorrow · 6:30 PM</span></div>
+          <div class="progress-track"><div class="progress-fill" style="--w:55%"></div></div>
+        </div>
+
+        <div class="progress-row">
+          <div class="progress-label"><span>NRG vs LOUD</span><span>Friday · 9:00 PM</span></div>
+          <div class="progress-track"><div class="progress-fill" style="--w:48%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE STATS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="eyebrow">Live Numbers</div>
+      <h2 class="featured-game-title">Tournament <span class="cyan">Stats</span></h2>
+
+      <div class="featured-tags" style="margin-top:30px;">
+        <span class="tag">2.8M Live Viewers</span>
+        <span class="tag">387 Matches Played</span>
+        <span class="tag">14,892 Eliminations</span>
+        <span class="tag">95% Server Uptime</span>
+        <span class="tag">1,240 Clutch Rounds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="featured-content reveal">
+        <div class="eyebrow">Join The Arena</div>
+        <h2 class="featured-game-title">Ready To Watch The <span class="cyan">Finals?</span></h2>
+
+        <p class="featured-desc">
+          Follow your favorite teams, track live brackets, view match stats, predict winners, and become part of the Stackly esports community.
+        </p>
+
+        <div class="featured-tags">
+          <span class="tag">Live Streams</span>
+          <span class="tag">Match Alerts</span>
+          <span class="tag">Fantasy League</span>
+          <span class="tag">Community Events</span>
+        </div>
+
+        <a href="schedule.html" class="btn btn-primary">View Schedule</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img footer-logo-img">
+        </a>
+
+        <p>
+          Stackly is the world's premier esports platform — delivering elite competition, real-time data, and a global community 24/7.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Competition</h4>
+         <ul>
+          <li><a href="live.html">Live Matches</a></li>
+          <li><a href="bracket.html">Tournament Bracket</a></li>
+          <li><a href="players.html">Rankings</a></li>
+          <li><a href="players.html">Hall of Fame</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="404page.html">Discord</a></li>
+          <li><a href="404page.html">Forums</a></li>
+          <li><a href="404page.html">Predictions</a></li>
+          <li><a href="404page.html">Fantasy League</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="404page.html">About Us</a></li>
+          <li><a href="404page.html">Press Kit</a></li>
+          <li><a href="404page.html">Careers</a></li>
+          <li><a href="404page.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 STACKLY · ALL RIGHTS RESERVED · BUILT FOR CHAMPIONS</div>
+
+      <div class="footer-social">
+        <a href="404page.html" class="social-link" aria-label="Twitter">𝕏</a>
+        <a href="404page.html" class="social-link" aria-label="Discord">💬</a>
+        <a href="404page.html" class="social-link" aria-label="YouTube">▶</a>
+        <a href="404page.html" class="social-link" aria-label="Instagram">📸</a>
+        <a href="404page.html" class="social-link" aria-label="Twitch">🟣</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal" id="authModal">
+    <button class="auth-close" id="authClose" aria-label="Close">✕</button>
+
+    <div class="auth-logo-wrap">
+      <img src="assets/logo-dark.webp" alt="Stackly Logo" class="auth-logo-img">
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Log In</button>
+      <button class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <div class="auth-panel active" id="panel-login">
+      <div class="auth-heading">Welcome back</div>
+      <p class="auth-sub">Enter the arena. Your stats await.</p>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <a href="404page.html" class="auth-forgot">Forgot password?</a>
+      <button class="auth-submit">Log In to Stackly</button>
+
+      <div class="auth-divider"><span>or continue with</span></div>
+
+      <div class="auth-social">
+        <button class="auth-social-btn">🌐 Google</button>
+        <button class="auth-social-btn">🎮 Discord</button>
+      </div>
+
+      <div class="auth-switch">
+        Don't have an account? <button id="switchToSignup">Sign up free</button>
+      </div>
+    </div>
+
+    <div class="auth-panel" id="panel-signup">
+      <div class="auth-heading">Create your account</div>
+      <p class="auth-sub">Join 4.8M players — track matches, predict outcomes, rise the ranks.</p>
+
+      <div class="auth-field-row">
+        <div class="auth-field">
+          <label>First Name</label>
+          <input type="text" placeholder="Arjun" autocomplete="given-name" />
+        </div>
+
+        <div class="auth-field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Sharma" autocomplete="family-name" />
+        </div>
+      </div>
+
+      <div class="auth-field">
+        <label>Gamertag / Username</label>
+        <input type="text" placeholder="ZephyrX" autocomplete="username" />
+      </div>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="Create a strong password" id="signupPassword" autocomplete="new-password" />
+        <div class="password-strength">
+          <div class="strength-bar" id="s1"></div>
+          <div class="strength-bar" id="s2"></div>
+          <div class="strength-bar" id="s3"></div>
+          <div class="strength-bar" id="s4"></div>
+        </div>
+      </div>
+
+      <button class="auth-submit">Create Account</button>
+
+      <div class="auth-divider"><span>or sign up with</span></div>
+
+      <div class="auth-social">
+        <button class="auth-social-btn">🌐 Google</button>
+        <button class="auth-social-btn">🎮 Discord</button>
+      </div>
+
+      <p class="auth-terms">
+        By signing up you agree to our <a href="404page.html">Terms of Service</a> and <a href="404page.html">Privacy Policy</a>.
+      </p>
+
+      <div class="auth-switch">
+        Already have an account? <button id="switchToLogin">Log in</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

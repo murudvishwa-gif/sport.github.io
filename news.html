@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>News — STACKLY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+.trending-news,
+.events-section,
+.video-highlights,
+.newsletter{
+  padding:80px 0;
+}
+
+.site-logo-img{
+  width:180px;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
+.footer-logo-img{
+  width:170px;
+}
+
+.trending-grid,
+.events-grid,
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+  margin-top:40px;
+}
+
+.trend-card,
+.event-card,
+.video-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(0,245,255,.15);
+  border-radius:18px;
+  padding:24px;
+  transition:.3s ease;
+}
+
+.trend-card:hover,
+.event-card:hover,
+.video-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 25px rgba(0,245,255,.18);
+}
+
+.trend-rank{
+  display:inline-block;
+  font-size:1.8rem;
+  color:#FFD700;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.trend-card h3,
+.event-card h3,
+.video-card h3{
+  color:#fff;
+  margin-bottom:12px;
+}
+
+.trend-card p,
+.event-card p{
+  color:rgba(255,255,255,.7);
+}
+
+.event-card span{
+  display:inline-block;
+  color:#00F5FF;
+  margin-bottom:12px;
+  font-weight:700;
+}
+
+.news-featured-img{
+  height:350px;
+  overflow:hidden;
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+}
+
+.news-featured-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease;
+}
+
+.news-featured:hover .news-featured-img img{
+  transform:scale(1.08);
+}
+
+.video-thumb{
+  height:180px;
+  overflow:hidden;
+  border-radius:12px;
+  margin-bottom:16px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 25px rgba(0,245,255,.2);
+  position:relative;
+}
+
+.video-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease;
+}
+
+.video-card:hover .video-thumb img{
+  transform:scale(1.08);
+}
+
+.video-thumb::after{
+  content:"▶";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3rem;
+  color:#fff;
+  background:rgba(0,0,0,.28);
+}
+
+.newsletter-box{
+  text-align:center;
+  background:linear-gradient(135deg,rgba(0,245,255,.08),rgba(139,0,255,.08));
+  border:1px solid rgba(0,245,255,.22);
+  border-radius:24px;
+  padding:50px 24px;
+}
+
+.newsletter-box h2{
+  color:#fff;
+  font-size:clamp(2rem,4vw,3rem);
+  margin-bottom:12px;
+}
+
+.newsletter-box p{
+  color:rgba(255,255,255,.72);
+  max-width:650px;
+  margin:0 auto;
+}
+
+.newsletter-form{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+.newsletter-form input{
+  width:320px;
+  max-width:100%;
+  padding:14px 18px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.16);
+  outline:none;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+
+.newsletter-form input::placeholder{
+  color:rgba(255,255,255,.5);
+}
+
+.newsletter-form button{
+  padding:14px 28px;
+  border:none;
+  border-radius:10px;
+  background:#00F5FF;
+  color:#020b12;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.newsletter-form button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(0,245,255,.35);
+}
+
+.newsletter-message{
+  margin-top:16px;
+  color:#00F5FF;
+  font-weight:700;
+}
+
+@media(max-width:768px){
+  .trending-news,
+  .events-section,
+  .video-highlights,
+  .newsletter{
+    padding:55px 0;
+  }
+
+  .site-logo-img{
+    width:145px;
+  }
+
+  .news-featured-img{
+    height:240px;
+  }
+
+  .newsletter-box{
+    padding:36px 18px;
+  }
+
+  .newsletter-form{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="live.html">Live</a></li>
+    <li><a href="teams.html">Teams</a></li>
+    <li><a href="bracket.html">Bracket</a></li>
+    <li><a href="players.html">Players</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+  </ul>
+
+  <div class="nav-auth">
+    <button class="btn-login" id="openLogin">Log In</button>
+    <button class="btn-signup" id="openSignup">Sign Up</button>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="live.html">Live Matches</a>
+  <a href="featured.html">Featured Game</a>
+  <a href="teams.html">Teams</a>
+  <a href="bracket.html">Tournament</a>
+  <a href="stats.html">Player Stats</a>
+  <a href="players.html">Players</a>
+  <a href="news.html">News</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="streaming.html">Streams</a>
+  <a href="community.html">Community</a>
+  <a href="sponsors.html">Sponsors</a>
+
+  <div class="mobile-auth-btns">
+    <button class="btn-login" id="openLoginMobile">Log In</button>
+    <button class="btn-signup" id="openSignupMobile">Sign Up</button>
+  </div>
+</div>
+
+<main class="page-main">
+
+<section class="section news" id="news">
+  <div class="section-inner">
+    <div class="eyebrow">Latest Updates</div>
+    <h2 class="section-title reveal">News &amp; <span class="gold">Highlights</span></h2>
+
+    <div class="news-grid">
+      <div class="news-featured reveal">
+        <div class="news-featured-img">
+          <img src="assets/OIP (1).webp" alt="Esports championship final">
+        </div>
+
+        <div class="news-featured-body">
+          <span class="tag">Breaking</span>
+          <h3 class="news-featured-title">Dragon Force Claim Worlds 2025 in Historic 5-Game Thriller</h3>
+          <div class="news-date">June 15, 2025 · 14 min read</div>
+          <p class="news-excerpt">
+            In what analysts are calling the greatest esports final ever played, Dragon Force and Volt Squad produced a series for the ages, culminating in a dramatic final-round defuse to secure the championship.
+          </p>
+        </div>
+      </div>
+
+      <div class="news-list">
+        <div class="news-item reveal">
+          <div class="news-item-icon">💰</div>
+          <div>
+            <div class="news-item-title">$4.2M Prize Pool Smashes Previous Record</div>
+            <div class="news-item-date">June 14, 2025</div>
+          </div>
+        </div>
+
+        <div class="news-item reveal reveal-delay-1">
+          <div class="news-item-icon">📋</div>
+          <div>
+            <div class="news-item-title">Roster Shuffle: Top 5 Transfers Heading Into Next Season</div>
+            <div class="news-item-date">June 13, 2025</div>
+          </div>
+        </div>
+
+        <div class="news-item reveal reveal-delay-2">
+          <div class="news-item-icon">🎯</div>
+          <div>
+            <div class="news-item-title">ZephyrX Named MVP After Record-Breaking Performance</div>
+            <div class="news-item-date">June 12, 2025</div>
+          </div>
+        </div>
+
+        <div class="news-item reveal reveal-delay-3">
+          <div class="news-item-icon">🌏</div>
+          <div>
+            <div class="news-item-title">APAC Region Dominates Semi-Finals With 3 Finalists</div>
+            <div class="news-item-date">June 11, 2025</div>
+          </div>
+        </div>
+
+        <div class="news-item reveal reveal-delay-4">
+          <div class="news-item-icon">📺</div>
+          <div>
+            <div class="news-item-title">Viewership Hits All-Time High of 8.4M Concurrent</div>
+            <div class="news-item-date">June 10, 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trending-news">
+  <div class="section-inner">
+    <div class="eyebrow">Trending Now</div>
+    <h2 class="section-title reveal">Most Popular <span class="gold">Stories</span></h2>
+
+    <div class="trending-grid">
+      <div class="trend-card reveal">
+        <span class="trend-rank">#1</span>
+        <h3>Volt Squad Announces New Captain</h3>
+        <p>The fan-favorite organization begins a new era with a leadership overhaul before the next international split.</p>
+      </div>
+
+      <div class="trend-card reveal reveal-delay-1">
+        <span class="trend-rank">#2</span>
+        <h3>Top 10 Plays of the Season</h3>
+        <p>A look back at the most unbelievable clutches, team fights, and mechanical moments from this year.</p>
+      </div>
+
+      <div class="trend-card reveal reveal-delay-2">
+        <span class="trend-rank">#3</span>
+        <h3>Rookie Players To Watch</h3>
+        <p>These rising stars are already making headlines across the global esports scene.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="events-section">
+  <div class="section-inner">
+    <div class="eyebrow">Upcoming Events</div>
+    <h2 class="section-title reveal">Esports <span class="gold">Calendar</span></h2>
+
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <h3>Summer Masters 2025</h3>
+        <span>July 18, 2025</span>
+        <p>32 elite teams compete for a massive $2M prize pool across three action-packed weeks.</p>
+      </div>
+
+      <div class="event-card reveal reveal-delay-1">
+        <h3>Global Invitational</h3>
+        <span>August 02, 2025</span>
+        <p>The best regional champions battle for worldwide supremacy in a high-pressure LAN event.</p>
+      </div>
+
+      <div class="event-card reveal reveal-delay-2">
+        <h3>Champions Cup</h3>
+        <span>September 15, 2025</span>
+        <p>The season-ending tournament featuring the highest ranked teams and MVP contenders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-highlights">
+  <div class="section-inner">
+    <div class="eyebrow">Watch</div>
+    <h2 class="section-title reveal">Latest <span class="gold">Highlights</span></h2>
+
+    <div class="video-grid">
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <img src="assets/rcv.YNA.20250625.PYH2025062511160001300_P1.webp" alt="Grand final highlights">
+        </div>
+        <h3>Grand Final Highlights</h3>
+      </div>
+
+      <div class="video-card reveal reveal-delay-1">
+        <div class="video-thumb">
+          <img src="assets/national-sports-day-motivational-images-hd_X2IO.webp" alt="Top clutch plays">
+        </div>
+        <h3>Top 20 Clutch Plays</h3>
+      </div>
+
+      <div class="video-card reveal reveal-delay-2">
+        <div class="video-thumb">
+          <img src="assets/narendra-modi50-1698294323 (1).webp" alt="MVP documentary">
+        </div>
+        <h3>MVP Documentary</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="section-inner newsletter-box reveal">
+    <h2>Stay Updated</h2>
+    <p>
+      Get breaking esports news, match results, tournament updates, roster changes, and exclusive highlights delivered directly to your inbox.
+    </p>
+
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <p id="newsletterMessage" class="newsletter-message"></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/logo-dark.webp" alt="Stackly Logo" class="site-logo-img footer-logo-img">
+        </a>
+
+        <p>
+          Stackly is the world's premier esports platform — delivering elite competition, real-time data, and a global community 24/7.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Competition</h4>
+         <ul>
+          <li><a href="live.html">Live Matches</a></li>
+          <li><a href="bracket.html">Tournament Bracket</a></li>
+          <li><a href="players.html">Rankings</a></li>
+          <li><a href="players.html">Hall of Fame</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="404page.html">Discord</a></li>
+          <li><a href="404page.html">Forums</a></li>
+          <li><a href="404page.html">Predictions</a></li>
+          <li><a href="404page.html">Fantasy League</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="404page.html">About Us</a></li>
+          <li><a href="404page.html">Press Kit</a></li>
+          <li><a href="404page.html">Careers</a></li>
+          <li><a href="404page.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 STACKLY · ALL RIGHTS RESERVED · BUILT FOR CHAMPIONS</div>
+
+      <div class="footer-social">
+        <a href="404page.html" class="social-link" aria-label="Twitter">𝕏</a>
+        <a href="404page.html" class="social-link" aria-label="Discord">💬</a>
+        <a href="404page.html" class="social-link" aria-label="YouTube">▶</a>
+        <a href="404page.html" class="social-link" aria-label="Instagram">📸</a>
+        <a href="404page.html" class="social-link" aria-label="Twitch">🟣</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal" id="authModal">
+    <button class="auth-close" id="authClose" aria-label="Close">✕</button>
+
+    <div class="auth-logo-wrap">
+      <img src="assets/logo-dark.webp" alt="Stackly Logo" class="auth-logo-img">
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Log In</button>
+      <button class="auth-tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <div class="auth-panel active" id="panel-login">
+      <div class="auth-heading">Welcome back</div>
+      <p class="auth-sub">Enter the arena. Your stats await.</p>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <a href="404page.html" class="auth-forgot">Forgot password?</a>
+      <button class="auth-submit">Log In to Stackly</button>
+
+      <div class="auth-divider"><span>or continue with</span></div>
+
+      <div class="auth-social">
+        <button class="auth-social-btn">🌐 Google</button>
+        <button class="auth-social-btn">🎮 Discord</button>
+      </div>
+
+      <div class="auth-switch">
+        Don't have an account? <button id="switchToSignup">Sign up free</button>
+      </div>
+    </div>
+
+    <div class="auth-panel" id="panel-signup">
+      <div class="auth-heading">Create your account</div>
+      <p class="auth-sub">Join 4.8M players — track matches, predict outcomes, rise the ranks.</p>
+
+      <div class="auth-field-row">
+        <div class="auth-field">
+          <label>First Name</label>
+          <input type="text" placeholder="Arjun" autocomplete="given-name" />
+        </div>
+
+        <div class="auth-field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Sharma" autocomplete="family-name" />
+        </div>
+      </div>
+
+      <div class="auth-field">
+        <label>Gamertag / Username</label>
+        <input type="text" placeholder="ZephyrX" autocomplete="username" />
+      </div>
+
+      <div class="auth-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" autocomplete="email" />
+      </div>
+
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" placeholder="Create a strong password" id="signupPassword" autocomplete="new-password" />
+
+        <div class="password-strength">
+          <div class="strength-bar" id="s1"></div>
+          <div class="strength-bar" id="s2"></div>
+          <div class="strength-bar" id="s3"></div>
+          <div class="strength-bar" id="s4"></div>
+        </div>
+      </div>
+
+      <button class="auth-submit">Create Account</button>
+
+      <div class="auth-divider"><span>or sign up with</span></div>
+
+      <div class="auth-social">
+        <button class="auth-social-btn">🌐 Google</button>
+        <button class="auth-social-btn">🎮 Discord</button>
+      </div>
+
+      <p class="auth-terms">
+        By signing up you agree to our <a href="404page.html">Terms of Service</a> and <a href="404page.html">Privacy Policy</a>.
+      </p>
+
+      <div class="auth-switch">
+        Already have an account? <button id="switchToLogin">Log in</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+const newsletterForm = document.getElementById("newsletterForm");
+const newsletterEmail = document.getElementById("newsletterEmail");
+const newsletterMessage = document.getElementById("newsletterMessage");
+
+if(newsletterForm){
+  newsletterForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    newsletterMessage.textContent = "✅ Thank you for subscribing!";
+    newsletterEmail.value = "";
+  });
+}
+</script>
+
+</body>
+</html>

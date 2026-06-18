@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    color:#fff;
+    overflow:hidden;
+    padding:20px;
+}
+
+.container{
+    text-align:center;
+    animation:fadeIn 1.5s ease;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    font-size:9rem;
+    color:#FFD700;
+    text-shadow:0 0 20px #FFD700;
+    animation:glow 2s infinite alternate;
+}
+
+h2{
+    font-size:2rem;
+    margin-bottom:15px;
+    color:#fff;
+}
+
+p{
+    color:#ccc;
+    margin-bottom:30px;
+    font-size:1.1rem;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 30px;
+    background:#FFD700;
+    color:#000;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.4s;
+    border:none;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+.btn:hover{
+    background:#fff;
+    transform:scale(1.08);
+    box-shadow:0 0 20px #FFD700;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,215,0,0.1);
+    animation:float 8s infinite linear;
+}
+
+.circle:nth-child(1){
+    width:250px;
+    height:250px;
+    top:10%;
+    left:10%;
+}
+
+.circle:nth-child(2){
+    width:180px;
+    height:180px;
+    bottom:15%;
+    right:15%;
+    animation-duration:10s;
+}
+
+.circle:nth-child(3){
+    width:120px;
+    height:120px;
+    top:70%;
+    left:70%;
+    animation-duration:12s;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #FFD700;
+    }
+    to{
+        text-shadow:0 0 30px #FFD700,
+                    0 0 50px #FFD700;
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-30px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:600px){
+    h1{
+        font-size:6rem;
+    }
+
+    h2{
+        font-size:1.5rem;
+    }
+
+    p{
+        font-size:1rem;
+    }
+
+    .btn{
+        width:100%;
+        max-width:220px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>Sorry, the page you are looking for does not exist. try again</p>
+
+    <div class="buttons">
+        <button class="btn" onclick="history.back()">← Go Back</button>
+        <a href="index.html" class="btn">Home</a>
+    </div>
+</div>
+
+</body>
+</html>
